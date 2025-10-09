@@ -6,7 +6,9 @@
 [![Electron](https://img.shields.io/badge/Electron-38.2.2-blue.svg)](https://electronjs.org/)
 [![Version](https://img.shields.io/badge/Version-2.0.0-green.svg)](https://github.com/dvtlab/tagifly)
 
-> **TagiFLY v2.0.0** is a professional, cross-platform desktop application for AI computer vision data labeling. Built with Electron and modern web technologies, it provides an intuitive interface for creating high-quality training datasets.
+Open source, lightweight, and focused only on what you need.
+> **TagiFLY v2.0.0** is a professional, cross-platform desktop application for AI computer vision data labeling.
+
 
 ## 📸 Screenshots
 
@@ -46,6 +48,11 @@
 - **Performance Optimized**: Cached rendering and smooth interactions
 - **Cross-Platform**: Windows, macOS, and Linux support
 - **Professional Canvas**: High-performance image rendering
+
+## ⚠️ Note 
+
+This is the **second release **.  
+It may contain bugs or missing features. Please share your feedback so we can improve it together. 🚀  
 
 ## 🚀 Quick Start
 
@@ -192,29 +199,13 @@ npm run build:all
 - **Custom Datasets**: Build specialized datasets for any computer vision task
 - **Research Projects**: Academic and commercial research applications
 
-## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
-
-### Development Setup
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes
-4. Test thoroughly
-5. Commit your changes: `git commit -m 'Add amazing feature'`
-6. Push to the branch: `git push origin feature/amazing-feature`
-7. Open a Pull Request
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
 
-**dvtlab**
-- Email: dvtlab@outlook.com
-- GitHub: [@dvtlab](https://github.com/dvtlab)
 
 ## 🙏 Acknowledgments
 
@@ -223,30 +214,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Fonts from [Google Fonts](https://fonts.google.com/)
 - Inspired by modern AI labeling tools
 
-## 📈 Roadmap
-
-- [ ] **v2.1.0**: Batch processing and automation
-- [ ] **v2.2.0**: AI-assisted labeling features
-- [ ] **v2.3.0**: Cloud synchronization
-- [ ] **v2.4.0**: Team collaboration features
-
-## 🐛 Bug Reports
-
-Found a bug? Please [open an issue](https://github.com/dvtlab/tagifly/issues) with:
-- Description of the bug
-- Steps to reproduce
-- Expected vs actual behavior
-- Screenshots if applicable
-
-## 💡 Feature Requests
-
-Have an idea? We'd love to hear it! Please [open an issue](https://github.com/dvtlab/tagifly/issues) with:
-- Clear description of the feature
-- Use case and benefits
-- Mockups or examples if possible
-
----
+## 👨‍💻 Author
 
 **TagiFLY v2.0.0** - Professional AI Labelling Tool for Computer Vision 🚀
 
-*Built with ❤️ by dvtlab*
+<div align="center">
+
+⭐ If TagiFLY helps you, don’t forget to leave a star!  
+
+Made with 💙 by dvtlab  
+
+📧 Contact: dvtlab@outlook.com  
+
+</div>
