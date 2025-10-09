@@ -1,6 +1,6 @@
 # TagiFLY v2.0.0 🚀
 
-**Professional AI Labelling Tool for Computer Vision**
+**AI Labelling Tool for Computer Vision**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Electron](https://img.shields.io/badge/Electron-38.2.2-blue.svg)](https://electronjs.org/)
