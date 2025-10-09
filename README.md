@@ -78,16 +78,6 @@ It may contain bugs or missing features. Please share your feedback so we can im
    npm start
    ```
 
-### Building for Production
-
-```bash
-# Build for current platform
-npm run build
-
-# Build for all platforms
-npm run build:all
-```
-
 ## 📖 User Guide
 
 ### Getting Started
