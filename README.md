@@ -204,11 +204,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Fonts from [Google Fonts](https://fonts.google.com/)
 - Inspired by modern AI labeling tools
 
-## 👨‍💻 Author
 
-**TagiFLY v2.0.0** - Professional AI Labelling Tool for Computer Vision 🚀
 
 <div align="center">
+
+## 👨‍💻 Author
+
+**TagiFLY v2.0.0** - Labelling Tool for AI Computer Vision 🚀
 
 ⭐ If TagiFLY helps you, don’t forget to leave a star!  
 
