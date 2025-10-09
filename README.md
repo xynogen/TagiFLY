@@ -116,26 +116,12 @@ It may contain bugs or missing features. Please share your feedback so we can im
 - **🚀 Error Resilience**: Robust error handling throughout the application
 
 ## 📄 License
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-##  Acknowledgments
-
-- Built with [Electron](https://electronjs.org/)
-- Icons from [Heroicons](https://heroicons.com/)
-- Fonts from [Google Fonts](https://fonts.google.com/)
-- Inspired by modern AI labeling tools
-
 <div align="center">
-
 ## 👨‍💻 Author
-
 **TagiFLY v2.0.0** - Labelling Tool for AI Computer Vision 🚀
-
 ⭐ If TagiFLY helps you, don’t forget to leave a star!  
-
 Made with 💙 by dvtlab  
-
 📧 Contact: dvtlab@outlook.com  
-
 </div>
