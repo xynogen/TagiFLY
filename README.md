@@ -8,6 +8,16 @@
 
 > **TagiFLY v2.0.0** is a professional, cross-platform desktop application for AI computer vision data labeling. Built with Electron and modern web technologies, it provides an intuitive interface for creating high-quality training datasets.
 
+## 📸 Screenshots
+
+| Main Screen | Annotation Example |
+|-------------|---------------------|
+| ![Main](ss/s1.png) | ![Annotation](ss/s2.png) |
+
+| Export Window | Dark Mode | Light Mode |
+|---------------|-----------|------------|
+| ![Export](ss/s3.png) | ![Dark](ss/s4.png) | ![Light](ss/s5.png) |
+
 ## ✨ Features
 
 ### 🎯 **Professional Annotation Tools**
