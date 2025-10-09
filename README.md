@@ -7,8 +7,7 @@
 [![Version](https://img.shields.io/badge/Version-2.0.0-green.svg)](https://github.com/dvtlab/tagifly)
 
 Open source, lightweight, and focused only on what you need.
-> **TagiFLY v2.0.0** is a professional, cross-platform desktop application for AI computer vision data labeling.
-
+> **TagiFLY v2.0.0** is a cross-platform desktop application for AI computer vision data labeling.
 
 ## 📸 Screenshots
 
@@ -29,48 +28,39 @@ Open source, lightweight, and focused only on what you need.
 - **Keypoint/Pose**: 17-point human pose estimation annotations
 - **Mask Paint**: Brush-based segmentation annotations
 - **Polyline**: Line and path annotations
-
 ### 📤 **Multiple Export Formats**
 - **JSON**: General-purpose format with full metadata
 - **YOLO**: Machine learning format for object detection
 - **COCO**: Microsoft COCO dataset format
 - **Pascal VOC**: XML format for computer vision
-
 ### 🔧 **Advanced Features**
 - **Label Management**: Export/import label configurations
 - **Performance Optimized**: Cached rendering and smooth interactions
 - **Cross-Platform**: Windows, macOS, and Linux support
 - **Professional Canvas**: High-performance image rendering
-
 ## ⚠️ Note 
-
 This is the **second release **.  
 It may contain bugs or missing features. Please share your feedback so we can improve it together. 🚀  
 
 ## 🚀 Quick Start
-
 ### Prerequisites
 - Node.js 16+ 
 - npm or yarn
 
 ### Installation
-
 1. **Clone the repository**
    ```bash
    git clone https://github.com/dvtlab/tagifly.git
    cd tagifly
    ```
-
 2. **Install dependencies**
    ```bash
    npm install
    ```
-
 3. **Start the application**
    ```bash
    npm start
    ```
-
 ## 📖 User Guide
 
 ### Getting Started
