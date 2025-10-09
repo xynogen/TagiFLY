@@ -119,9 +119,15 @@ It may contain bugs or missing features. Please share your feedback so we can im
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 <div align="center">
+
 ## 👨‍💻 Author
+
 **TagiFLY v2.0.0** - Labelling Tool for AI Computer Vision 🚀
+
 ⭐ If TagiFLY helps you, don’t forget to leave a star!  
+
 Made with 💙 by dvtlab  
+
 📧 Contact: dvtlab@outlook.com  
+
 </div>
