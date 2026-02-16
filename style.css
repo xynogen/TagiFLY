@@ -595,24 +595,21 @@ body {
 .image-item {
   position: relative;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border-radius: 8px;
+  transition: all var(--transition-base);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  background: var(--gray-50);
+  background: var(--surface-secondary);
   border: 2px solid transparent;
 }
 
-/* Hover effect removed - not needed since active state is clear enough */
-
-.image-item.active {
-  border-color: var(--primary-500);
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+.image-item:hover {
+  background: var(--gray-100);
+  transform: translateY(-2px);
 }
 
-/* List view specific active state - thicker border */
-.image-list-container.list-view .image-item.active {
-  border-width: 3px;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+.image-item.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.2);
 }
 
 /* GRID VIEW SPECIFIC */
@@ -625,16 +622,16 @@ body {
 .image-list-container.list-view .image-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px;
-  min-height: 70px;
+  gap: var(--space-md);
+  padding: var(--space-sm);
+  margin-bottom: 4px;
 }
 
 /* Thumbnail styles */
 .image-thumbnail {
   position: relative;
   overflow: hidden;
-  background: var(--gray-100);
+  background: var(--gray-200);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -644,14 +641,13 @@ body {
 .image-list-container.grid-view .image-thumbnail {
   width: 100%;
   height: 100%;
-  border-radius: 6px;
 }
 
 /* List view thumbnail */
 .image-list-container.list-view .image-thumbnail {
   width: 48px;
   height: 48px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   flex-shrink: 0;
 }
 
@@ -661,61 +657,61 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform var(--transition-base);
+}
+
+.image-item:hover .image-thumbnail img {
+  transform: scale(1.05);
 }
 
 /* Status overlay for grid view */
 .image-list-container.grid-view .image-overlay {
   position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 20px;
-  height: 20px;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
-  font-weight: bold;
+  font-size: 11px;
   color: white;
   z-index: 2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  border: 1.5px solid white;
 }
 
 .image-list-container.grid-view .image-item.labeled .image-overlay {
-  background: #22c55e;
-  /* Green */
+  background: var(--secondary);
 }
 
 .image-list-container.grid-view .image-item:not(.labeled) .image-overlay {
-  background: #3b82f6;
-  /* Blue */
+  background: rgba(0, 0, 0, 0.4);
 }
 
-/* Info section */
+/* Info section for list view */
 .image-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   flex: 1;
   min-width: 0;
 }
 
 .image-name {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--gray-900);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .image-status {
-  font-size: 12px;
-  color: var(--gray-600);
-}
-
-.image-index {
-  font-size: 11px;
-  color: var(--gray-500);
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
 }
 
 /* Hide info in grid view */
@@ -723,11 +719,17 @@ body {
   display: none;
 }
 
-/* Show status in list view */
-.image-list-container.list-view .image-status {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+/* Dark mode specific adjustments */
+[data-theme="dark"] .image-item {
+  background: var(--surface-secondary);
+}
+
+[data-theme="dark"] .image-item:hover {
+  background: var(--gray-100);
+}
+
+[data-theme="dark"] .image-thumbnail {
+  background: var(--gray-100);
 }
 
 .image-list-container::-webkit-scrollbar {
@@ -754,81 +756,12 @@ body {
   justify-content: center;
   padding: var(--space-2xl) var(--space-md);
   text-align: center;
-  color: var(--gray-500);
+  color: var(--text-tertiary);
 }
 
 .empty-state svg {
   margin-bottom: var(--space-md);
-  opacity: 0.5;
-}
-
-.empty-state p {
-  font-size: var(--font-size-sm);
-  color: var(--gray-600);
-}
-
-.image-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  padding: var(--space-md);
-  margin-bottom: var(--space-sm);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all var(--transition-base);
-  border: 1px solid transparent;
-  background: var(--white);
-}
-
-.image-item:hover {
-  background: var(--gray-50);
-  border-color: var(--gray-200);
-  transform: translateY(-1px);
-}
-
-.image-item.active {
-  background: var(--primary);
-  color: var(--white);
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
-}
-
-.image-thumbnail {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  background: var(--gray-100);
-  flex-shrink: 0;
-  position: relative;
-}
-
-.image-thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.image-info {
-  flex: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-width: 0;
-}
-
-.image-name {
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  flex: 1;
-}
-
-.image-status {
-  font-size: var(--font-size-base);
-  margin-left: var(--space-sm);
+  opacity: 0.3;
 }
 
 /* Label Input */

@@ -368,7 +368,20 @@ export class UIManager {
             if (this.app.currentImageView === 'grid') {
                 const overlay = document.createElement('div');
                 overlay.className = 'image-overlay';
-                overlay.textContent = hasAnnotations ? '✓' : '○';
+
+                if (hasAnnotations) {
+                    overlay.innerHTML = `
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    `;
+                } else {
+                    overlay.innerHTML = `
+                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2.5"/>
+                        </svg>
+                    `;
+                }
                 thumbnail.appendChild(overlay);
             }
 
