@@ -13,7 +13,7 @@
   --accent: #FF3B30;
   --accent-hover: #D70015;
   --success-500: #34C759;
-  
+
   /* Light Theme Neutrals */
   --background: #FFFFFF;
   --surface: #FFFFFF;
@@ -23,7 +23,7 @@
   --text-primary: #1C1C1E;
   --text-secondary: #636366;
   --text-tertiary: #8E8E93;
-  
+
   /* Legacy support */
   --white: #FFFFFF;
   --gray-50: #FAFAFA;
@@ -36,7 +36,7 @@
   --gray-700: #636366;
   --gray-800: #48484A;
   --gray-900: #1C1C1E;
-  
+
   /* Spacing */
   --space-xs: 4px;
   --space-sm: 8px;
@@ -44,19 +44,19 @@
   --space-lg: 24px;
   --space-xl: 32px;
   --space-2xl: 48px;
-  
+
   /* Border radius */
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
-  
+
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
-  
+
   /* Typography */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-size-xs: 11px;
@@ -66,7 +66,7 @@
   --font-size-xl: 20px;
   --font-size-2xl: 24px;
   --font-size-3xl: 32px;
-  
+
   /* Transitions */
   --transition-fast: 0.15s ease-out;
   --transition-base: 0.2s ease-out;
@@ -87,7 +87,7 @@
   --accent: #FF453A;
   --accent-hover: #FF6961;
   --success-500: #32D74B;
-  
+
   /* Dark Theme Neutrals */
   --background: #000000;
   --surface: #1C1C1E;
@@ -97,7 +97,7 @@
   --text-primary: #FFFFFF;
   --text-secondary: #AEAEB2;
   --text-tertiary: #8E8E93;
-  
+
   /* Legacy support for dark */
   --white: #1C1C1E;
   --gray-50: #2C2C2E;
@@ -110,12 +110,34 @@
   --gray-700: #C7C7CC;
   --gray-800: #D1D1D6;
   --gray-900: #F2F2F7;
-  
+
   /* Dark shadows */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* Dark Mode Overrides for Buttons */
+[data-theme="dark"] .btn-theme,
+[data-theme="dark"] .btn-notification,
+[data-theme="dark"] .shortcuts-help {
+  background: var(--surface-secondary) !important;
+  border-color: var(--border) !important;
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .btn-theme:hover,
+[data-theme="dark"] .btn-notification:hover,
+[data-theme="dark"] .shortcuts-help:hover {
+  background: var(--gray-200) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .control-icon,
+[data-theme="dark"] .theme-icon,
+[data-theme="dark"] .shortcuts-help svg {
+  color: inherit !important;
 }
 
 /* Reset & Base */
@@ -184,45 +206,121 @@ body {
   gap: var(--space-sm);
 }
 
+/* Header Toggle Controls */
+.header-controls .notification-toggle-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.control-hint {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-base);
+  pointer-events: auto;
+  z-index: 1000;
+  padding-top: 4px;
+}
+
+.btn-theme:hover .control-hint,
+.btn-notification:hover .control-hint,
+.control-hint:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(4px);
+}
+
+.control-hint-content {
+  background: var(--gray-900);
+  color: var(--white);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xl);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  font-weight: 600;
+  margin: 0;
+}
+
+.control-hint-content::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-bottom-color: var(--gray-900);
+}
+
 /* Theme Toggle */
 .theme-toggle {
   display: flex;
   align-items: center;
 }
 
-.btn-theme {
+.btn-theme,
+.btn-notification {
   position: relative;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
   background: var(--gray-100);
   border: 1px solid var(--border);
   color: var(--text-secondary);
   transition: all var(--transition-base);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   cursor: pointer;
+  padding: 0 !important;
+  line-height: 0 !important;
 }
 
-.btn-theme:hover {
+.control-icon {
+  width: 18px !important;
+  height: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+.btn-theme:hover,
+.btn-notification:hover {
   background: var(--gray-200);
   color: var(--text-primary);
   transform: translateY(-1px);
 }
 
-.btn-theme:focus {
+.btn-theme:focus,
+.btn-notification:focus {
   outline: none;
   box-shadow: 0 0 0 3px var(--primary-200);
 }
 
-.btn-theme:active {
+.btn-theme:active,
+.btn-notification:active {
   transform: translateY(0);
+}
+
+.btn-notification[aria-pressed="true"] {
+  color: var(--primary);
+}
+
+.btn-notification[aria-pressed="false"] {
+  color: var(--text-secondary);
 }
 
 .theme-icon {
   position: absolute;
   transition: all var(--transition-base);
+  width: 16px;
+  height: 16px;
 }
 
 .moon-icon {
@@ -583,11 +681,13 @@ body {
 }
 
 .image-list-container.grid-view .image-item.labeled .image-overlay {
-  background: #22c55e; /* Green */
+  background: #22c55e;
+  /* Green */
 }
 
 .image-list-container.grid-view .image-item:not(.labeled) .image-overlay {
-  background: #3b82f6; /* Blue */
+  background: #3b82f6;
+  /* Blue */
 }
 
 /* Info section */
@@ -885,7 +985,8 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: transparent; /* NO BACKGROUND - Photoshop style */
+  background: transparent;
+  /* NO BACKGROUND - Photoshop style */
 }
 
 /* Canvas header removed for ultra minimal design */
@@ -893,19 +994,27 @@ body {
 .image-viewport {
   flex: 1;
   position: relative;
-  overflow: hidden; /* Hide overflow for full viewport */
-  min-height: 0; /* Allow flex shrinking */
-  display: block; /* Remove flex centering */
-  padding: 0; /* Remove padding */
-  background: transparent; /* NO WHITE BACKGROUND! */
+  overflow: hidden;
+  /* Hide overflow for full viewport */
+  min-height: 0;
+  /* Allow flex shrinking */
+  display: block;
+  /* Remove flex centering */
+  padding: 0;
+  /* Remove padding */
+  background: transparent;
+  /* NO WHITE BACKGROUND! */
 }
 
 #imageCanvas {
   width: 100%;
   height: 100%;
-  border-radius: 0; /* Remove border radius for full viewport */
-  box-shadow: none; /* Remove shadow for full viewport */
-  background: transparent; /* NO WHITE BACKGROUND! */
+  border-radius: 0;
+  /* Remove border radius for full viewport */
+  box-shadow: none;
+  /* Remove shadow for full viewport */
+  background: transparent;
+  /* NO WHITE BACKGROUND! */
   display: block;
   /* Remove position absolute - let it fill viewport naturally */
   /* position: absolute;
@@ -961,7 +1070,8 @@ body {
 
 .zoom-indicator {
   position: absolute;
-  bottom: calc(var(--space-lg) + 40px); /* Zoom controls'ın üstünde */
+  bottom: calc(var(--space-lg) + 40px);
+  /* Zoom controls'ın üstünde */
   right: var(--space-lg);
   display: flex;
   align-items: center;
@@ -982,9 +1092,12 @@ body {
 
 /* Dark theme zoom indicator */
 [data-theme="dark"] .zoom-indicator {
-  color: var(--text-primary); /* White text in dark theme */
-  background: rgba(28, 28, 30, 0.9); /* Dark background */
-  border-color: var(--border); /* Dark border */
+  color: var(--text-primary);
+  /* White text in dark theme */
+  background: rgba(28, 28, 30, 0.9);
+  /* Dark background */
+  border-color: var(--border);
+  /* Dark border */
 }
 
 .zoom-divider {
@@ -1063,41 +1176,22 @@ body {
   border: 1px solid var(--gray-200);
 }
 
-.shortcuts-help {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--gray-100);
-  color: var(--gray-500);
-  cursor: help;
-  transition: all var(--transition-base);
-  flex-shrink: 0;
-}
-
-.shortcuts-help:hover {
-  background: var(--primary);
-  color: var(--white);
-  transform: scale(1.1);
-}
-
 .shortcuts-tooltip {
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 12px;
+  margin-top: 8px;
   opacity: 0;
   visibility: hidden;
   transition: all var(--transition-base);
-  pointer-events: none;
+  pointer-events: auto;
   z-index: 1000;
+  padding-top: 4px;
 }
 
-.shortcuts-help:hover .shortcuts-tooltip {
+.shortcuts-help:hover .shortcuts-tooltip,
+.shortcuts-tooltip:hover {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(4px);
@@ -1231,6 +1325,7 @@ body {
     opacity: 0;
     transform: scale(0.95) translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -1362,15 +1457,15 @@ body {
   .header-content {
     padding: var(--space-sm) var(--space-md);
   }
-  
+
   .brand h1 {
     font-size: var(--font-size-lg);
   }
-  
+
   .sidebar {
     width: 240px;
   }
-  
+
   .export-grid {
     grid-template-columns: 1fr;
   }
@@ -1396,7 +1491,9 @@ body {
 /* Dark mode support (future enhancement) */
 @media (prefers-color-scheme: dark) {
   /* Dark mode variables would go here */
-}/* Zo
+}
+
+/* Zo
 om Indicator */
 .zoom-indicator {
   position: absolute;
@@ -1524,7 +1621,9 @@ om Indicator */
 
 [data-theme="dark"] .label-input::placeholder {
   color: var(--text-secondary);
-}/* DEVRI
+}
+
+/* DEVRI
 MSEL ANNOTATION TOOLS */
 .annotation-tools {
   display: flex;
@@ -1609,6 +1708,11 @@ MSEL ANNOTATION TOOLS */
   border: 1px solid var(--border);
 }
 
+.header-controls .shortcuts-help svg {
+  width: 16px;
+  height: 16px;
+}
+
 .header-controls .shortcuts-help:hover {
   background: var(--primary);
   color: var(--white);
@@ -1621,17 +1725,17 @@ MSEL ANNOTATION TOOLS */
     padding: var(--space-xs) var(--space-md);
     gap: var(--space-sm);
   }
-  
+
   .annotation-tools {
     gap: 1px;
     padding: 2px;
   }
-  
+
   .annotation-tool {
     width: 32px;
     height: 32px;
   }
-  
+
   .image-counter {
     font-size: var(--font-size-xs);
     padding: var(--space-xs);

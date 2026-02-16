@@ -13,7 +13,7 @@ export class UIManager {
     // ========== EVENT LISTENERS SETUP ==========
     setupEventListeners() {
         console.log('🔍 Setting up event listeners...');
-        
+
         // Folder Selection
         const selectBtn = document.getElementById('selectFolder');
         console.log('🔍 Select button found:', selectBtn);
@@ -134,18 +134,18 @@ export class UIManager {
     // ========== IMAGE VIEW MANAGEMENT ==========
     toggleImageView(view) {
         console.log(`🔄 Switching to ${view} view`);
-        
+
         // Update active button
         document.querySelectorAll('.view-btn').forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-view') === view);
         });
-        
+
         // Store current view preference
         this.app.currentImageView = view;
-        
+
         // Force re-render with new view
         this.renderImageList();
-        
+
         NotificationManager.info(`Switched to ${view} view`);
     }
 
@@ -290,7 +290,7 @@ export class UIManager {
         console.log(`📊 Current view:`, this.app.currentImageView);
         console.log(`📊 Current image index:`, this.app.currentImageIndex);
         console.log(`📊 Annotations:`, this.app.annotations);
-        
+
         const startTime = performance.now();
 
         // NUCLEAR OPTION: COMPLETELY DESTROY AND RECREATE
@@ -323,14 +323,14 @@ export class UIManager {
         this.app.images.forEach((imageObj, index) => {
             const fileName = imageObj.name;
             const imagePath = imageObj.path;
-            
+
             // Check if this image has annotations
-            const hasAnnotations = this.app.annotations && 
-                                 this.app.annotations[imagePath] && 
-                                 this.app.annotations[imagePath].length > 0;
-            
+            const hasAnnotations = this.app.annotations &&
+                this.app.annotations[imagePath] &&
+                this.app.annotations[imagePath].length > 0;
+
             const isActive = index === this.app.currentImageIndex;
-            
+
             console.log(`🖼️ Image ${index + 1}: ${fileName}`);
             console.log(`   📁 Path: ${imagePath}`);
             console.log(`   🏷️ HasAnnotations: ${hasAnnotations}`);
@@ -340,7 +340,7 @@ export class UIManager {
             // Create image item
             const item = document.createElement('div');
             item.className = 'image-item';
-            
+
             if (isActive) {
                 item.classList.add('active');
             }
@@ -357,9 +357,9 @@ export class UIManager {
             img.src = imageObj.url;
             img.alt = fileName;
             img.loading = 'lazy';
-            img.onerror = function() { 
+            img.onerror = function () {
                 console.log(`❌ Failed to load image: ${fileName}`);
-                this.style.display = 'none'; 
+                this.style.display = 'none';
             };
 
             thumbnail.appendChild(img);
@@ -423,23 +423,23 @@ export class UIManager {
             console.log(`📊 Current annotations before switch:`, this.app.annotations);
             console.log(`📁 Image object:`, this.app.images[index]);
             console.log(`📁 Image path:`, this.app.images[index].path);
-            
+
             // CRITICAL: Update current image index FIRST
             this.app.currentImageIndex = index;
             console.log(`🎯 Updated currentImageIndex to: ${this.app.currentImageIndex}`);
-            
+
             // CRITICAL: Update currentImage reference IMMEDIATELY
             this.app.currentImage = this.app.images[index];
             console.log(`🎯 Updated currentImage to:`, this.app.currentImage);
             console.log(`🎯 SYNCHRONIZATION CHECK:`, this.app.currentImage.path === this.app.images[index].path);
-            
+
             // Use new professional system
             this.app.loadImage(this.app.images[index]);
-            
+
             // Update UI after image is loaded
             this.renderImageList();
             this.updateUI();
-            
+
             console.log(`📊 Current annotations after switch:`, this.app.annotations);
             console.log(`✅ Image switch complete`);
         }
@@ -488,7 +488,7 @@ export class UIManager {
             return;
         }
 
-        const annotatedCount = this.app.images.filter(img => 
+        const annotatedCount = this.app.images.filter(img =>
             this.app.annotations[img.path] && this.app.annotations[img.path].length > 0
         ).length;
 
@@ -516,12 +516,40 @@ export class UIManager {
             });
         }
         console.log('✅ Theme system initialized');
+
+        // Initialize notification toggle
+        this.initNotificationToggle();
+    }
+
+    // ========== NOTIFICATION TOGGLE ==========
+    initNotificationToggle() {
+        const notificationToggle = document.getElementById('notificationToggle');
+        if (notificationToggle) {
+            const notificationsEnabled = localStorage.getItem('notificationsEnabled') !== 'false';
+            NotificationManager.setEnabled(notificationsEnabled);
+            notificationToggle.setAttribute('aria-pressed', String(notificationsEnabled));
+
+            notificationToggle.addEventListener('click', () => {
+                const enabled = NotificationManager.isEnabled();
+                const nextState = !enabled;
+                NotificationManager.setEnabled(nextState);
+                notificationToggle.setAttribute('aria-pressed', String(nextState));
+                localStorage.setItem('notificationsEnabled', String(nextState));
+
+                if (nextState) {
+                    NotificationManager.info('Notifications enabled');
+                }
+
+                console.log(`🔔 Notifications ${nextState ? 'enabled' : 'disabled'}`);
+            });
+        }
+        console.log('✅ Notification toggle initialized');
     }
 
     // ========== LABEL TABS ==========
     setupLabelTabs() {
         console.log('🔍 Setting up label tabs...');
-        
+
         // Tab buttons
         const tabButtons = document.querySelectorAll('.label-tab-btn');
         tabButtons.forEach(button => {
@@ -549,7 +577,7 @@ export class UIManager {
 
     switchLabelTab(tab) {
         console.log('🔄 Switching to label tab:', tab);
-        
+
         // Update tab buttons
         document.querySelectorAll('.label-tab-btn').forEach(btn => {
             btn.classList.remove('active');
@@ -560,7 +588,7 @@ export class UIManager {
         document.querySelectorAll('.label-tab-content').forEach(content => {
             content.classList.remove('active');
         });
-        
+
         // Handle special case for import-export tab
         const tabId = tab === 'import-export' ? 'importExportTab' : `${tab}Tab`;
         document.getElementById(tabId).classList.add('active');
@@ -589,7 +617,7 @@ export class UIManager {
     async exportLabels() {
         try {
             console.log('📤 Exporting labels...');
-            
+
             const labelData = {
                 version: '2.0.0',
                 created: new Date().toISOString(),
@@ -602,7 +630,7 @@ export class UIManager {
             const jsonData = JSON.stringify(labelData, null, 2);
             const blob = new Blob([jsonData], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
-            
+
             const a = document.createElement('a');
             a.href = url;
             a.download = `tagifly_labels_${new Date().toISOString().split('T')[0]}.json`;
@@ -613,7 +641,7 @@ export class UIManager {
 
             NotificationManager.success(`Labels exported successfully! (${this.app.labels.length} labels)`);
             console.log('✅ Labels exported successfully');
-            
+
         } catch (error) {
             console.error('❌ Label export error:', error);
             NotificationManager.error('Failed to export labels');
@@ -623,7 +651,7 @@ export class UIManager {
     async importLabels() {
         try {
             console.log('📥 Importing labels...');
-            
+
             const input = document.createElement('input');
             input.type = 'file';
             input.accept = '.json';
@@ -643,7 +671,7 @@ export class UIManager {
                 // Merge with existing labels (avoid duplicates)
                 const existingLabels = new Set(this.app.labels);
                 const newLabels = labelData.labels.filter(label => !existingLabels.has(label));
-                
+
                 if (newLabels.length === 0) {
                     NotificationManager.info('No new labels to import');
                     return;
@@ -651,7 +679,7 @@ export class UIManager {
 
                 // Add new labels
                 this.app.labels.push(...newLabels);
-                
+
                 // Add colors for new labels if available
                 if (labelData.labelColors) {
                     newLabels.forEach(label => {
@@ -664,13 +692,13 @@ export class UIManager {
                 // Update UI
                 this.renderLabels();
                 this.updateLabelStats();
-                
+
                 NotificationManager.success(`Imported ${newLabels.length} new labels successfully!`);
                 console.log('✅ Labels imported successfully');
             };
-            
+
             input.click();
-            
+
         } catch (error) {
             console.error('❌ Label import error:', error);
             NotificationManager.error('Failed to import labels');
